@@ -1,5 +1,9 @@
 # Task Planet - Mini Social Post Application
 
+🚀 **Live Deployment Links:**
+- **Frontend (Vercel)**: [https://task-planet-iota.vercel.app](https://task-planet-iota.vercel.app)
+- **Backend API (Render)**: [https://task-planet-1qo3.onrender.com](https://task-planet-1qo3.onrender.com)
+
 ## Overview
 A full-stack Mini Social Post Application built for the 3W Full Stack Internship Assignment. It closely mirrors the aesthetic of the TaskPlanet mobile app with a clean, fully responsive, glassmorphic Material UI design.
 
