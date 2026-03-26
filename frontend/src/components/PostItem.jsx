@@ -10,12 +10,13 @@ const PostItem = ({ post, onPostUpdate }) => {
   const [commentText, setCommentText] = useState('');
 
   const isLiked = post.likes.includes(user?._id);
+  const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 
   const handleLike = async () => {
     if (!user) return;
     try {
       const config = { headers: { Authorization: `Bearer ${user.token}` } };
-      const { data } = await axios.put(`http://localhost:5000/api/posts/${post._id}/like`, {}, config);
+      const { data } = await axios.put(`${API_URL}/api/posts/${post._id}/like`, {}, config);
       onPostUpdate({ ...post, likes: data });
     } catch (error) {
       console.error('Error liking post', error);
@@ -27,7 +28,7 @@ const PostItem = ({ post, onPostUpdate }) => {
     if (!commentText.trim() || !user) return;
     try {
       const config = { headers: { Authorization: `Bearer ${user.token}` } };
-      const { data } = await axios.post(`http://localhost:5000/api/posts/${post._id}/comment`, { text: commentText }, config);
+      const { data } = await axios.post(`${API_URL}/api/posts/${post._id}/comment`, { text: commentText }, config);
       onPostUpdate({ ...post, comments: data });
       setCommentText('');
     } catch (error) {

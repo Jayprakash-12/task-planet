@@ -20,9 +20,11 @@ const Feed = () => {
     }
   }, [user, navigate]);
 
+  const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+
   const fetchPosts = async () => {
     try {
-      const { data } = await axios.get('http://localhost:5000/api/posts');
+      const { data } = await axios.get(`${API_URL}/api/posts`);
       setPosts(data);
     } catch (error) {
       console.error('Error fetching posts', error);

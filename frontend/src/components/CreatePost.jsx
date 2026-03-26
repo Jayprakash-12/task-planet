@@ -9,13 +9,15 @@ const CreatePost = ({ onPostCreated }) => {
   const [image, setImage] = useState('');
   const { user } = useContext(AuthContext);
 
+  const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!content.trim() && !image.trim()) return;
 
     try {
       const config = { headers: { Authorization: `Bearer ${user.token}` } };
-      const { data } = await axios.post('http://localhost:5000/api/posts', { content, image }, config);
+      const { data } = await axios.post(`${API_URL}/api/posts`, { content, image }, config);
       onPostCreated(data);
       setContent('');
       setImage('');
